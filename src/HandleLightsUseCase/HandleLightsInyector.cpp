@@ -13,7 +13,7 @@ HandleLightsAction* HandleLightsInyector::getHandleLightsAction() {
 }
 
 HandleLightsUseCase* HandleLightsInyector::getHandleLightsUseCase() {
-  return new HandleLightsUseCase(getWelcomeScreenController());
+  return new HandleLightsUseCase(getLightsController());
 }
 
 LightsController* HandleLightsInyector::getLightsController() {

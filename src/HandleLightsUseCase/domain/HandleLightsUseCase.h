@@ -10,7 +10,7 @@ public:
   void handleLights();
 
 private:
-  LightsController* LightsController;
+  LightsController* lightsController;
 };
 
 
