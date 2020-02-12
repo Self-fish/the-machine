@@ -5,6 +5,8 @@
 #include "../../core/action/Action.cpp"
 #include "../domain/MachineConfigurationUseCase.h"
 
+const char CONFIGURE_ACTION[4] = "CON";
+
 class MachineConfigurationAction: public Action {
 public:
   MachineConfigurationAction(MachineConfigurationUseCase* machineConfigUseCase,

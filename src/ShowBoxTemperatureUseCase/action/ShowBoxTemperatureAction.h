@@ -6,7 +6,10 @@
 #include "../domain/ShowBoxTemperatureUseCase.h"
 #include "../../ShowMainScreenUseCase/domain/ShowMainScreenUseCase.h"
 
+const char UPDATE_TEMPERATURE_ACTION[4] = "T_U";
+
 class ShowBoxTemperatureAction: public Action {
+
 public:
   ShowBoxTemperatureAction(ShowBoxTemperatureUseCase* tUseCase,
     ShowMainScreenUseCase* mUseCase, UsbController* uController);

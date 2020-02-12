@@ -6,6 +6,8 @@
 #include "../domain/ShowWaterTemperatureUseCase.h"
 #include "../../ShowMainScreenUseCase/domain/ShowMainScreenUseCase.h"
 
+const char UPDATE_WATER_TEMPERATURE_ACTION[4] = "W_U";
+
 class ShowWaterTemperatureAction: public Action {
 public:
   ShowWaterTemperatureAction(ShowWaterTemperatureUseCase* tUseCase,

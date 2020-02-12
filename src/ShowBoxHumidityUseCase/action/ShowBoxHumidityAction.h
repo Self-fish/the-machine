@@ -6,6 +6,8 @@
 #include "../domain/ShowBoxHumidityUseCase.h"
 #include "../../ShowMainScreenUseCase/domain/ShowMainScreenUseCase.h"
 
+const char UPDATE_HUMIDITY_ACTION[4] = "H_U";
+
 class ShowBoxHumidityAction: public Action {
 public:
   ShowBoxHumidityAction(ShowBoxHumidityUseCase* hUseCase,

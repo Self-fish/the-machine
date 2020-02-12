@@ -9,6 +9,7 @@ ActionBuilder::ActionBuilder() {
   configurationInyector = MachineConfigurationInyector();
   boxTemperatureInyector = ShowBoxTemperatureInyector();
   waterTemperatureInyector = ShowWaterTemperatureInyector();
+  handleLightsInyector = HandleLightsInyector();
 }
 
 Action* ActionBuilder::build(char* input) {
@@ -22,6 +23,10 @@ Action* ActionBuilder::build(char* input) {
     return boxTemperatureInyector.getBoxTemperatureAction();
   } else if(strstr(input, UPDATE_WATER_TEMPERATURE_ACTION) != NULL) {
     return waterTemperatureInyector.getWaterTemperatureAction();
+  } else if(strstr(input, LIGHT_ON_ACTION) != NULL ||
+      strstr(input, LIGHT_OFF_ACTION) != NULL ||
+      strstr(input, LIGHT_GET_ACTION) != NULL) {
+    return handleLightsInyector.getHandleLightsAction();
   }
 }
 

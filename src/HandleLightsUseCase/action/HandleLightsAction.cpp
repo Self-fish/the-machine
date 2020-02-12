@@ -6,5 +6,5 @@ UsbController* uController) : Action(uController){
 }
 
 void HandleLightsAction::executeAction(char* inputString) {
-    //useCase->showScreen();
+  useCase->turnOnLights();
 }

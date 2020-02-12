@@ -7,7 +7,8 @@ class HandleLightsUseCase {
 
 public:
   HandleLightsUseCase(LightsController* lController);
-  void handleLights();
+  void turnOnLights();
+  void turnOffLights();
 
 private:
   LightsController* lightsController;
