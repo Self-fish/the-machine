@@ -4,6 +4,8 @@
 #include "Arduino.h"
 
 #define OK "OK"
+#define ON "ON"
+#define OFF "OFF"
 
 class UsbController {
 public:

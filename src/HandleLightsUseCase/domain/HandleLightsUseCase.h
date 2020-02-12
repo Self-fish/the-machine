@@ -9,6 +9,7 @@ public:
   HandleLightsUseCase(LightsController* lController);
   void turnOnLights();
   void turnOffLights();
+  boolean isLightOn();
 
 private:
   LightsController* lightsController;

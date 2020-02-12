@@ -2,10 +2,6 @@
 #include "action/ActionBuilder.h"
 #include "../../lib/MemoryFree/MemoryFree.h"
 
-#define WATER_TEMPERATURE_PIN 10
-#define HUMIDITY_PIN 6
-#define DHTTYPE DHT22
-
 Action* action;
 OneWire ourWire(WATER_TEMPERATURE_PIN);
 DallasTemperature waterSensor(&ourWire);
@@ -26,6 +22,7 @@ void setup() {
   humiditySensor.begin();
   lcd.begin();
   lcd.backlight();
+  pinMode(LIGHTS_PIN, OUTPUT);
   actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
   executeAction("S_W");
   Serial.println(freeMemory());
