@@ -1,13 +1,13 @@
 #include "MachineConfigurationAction.h"
 
 MachineConfigurationAction::MachineConfigurationAction(
-    MachineConfigurationUseCase* machineConfigUseCase,
+    TimeController* c,
     UsbController* uController) : Action(uController){
-  useCase = machineConfigUseCase;
+  controller = c;
 }
 
 void MachineConfigurationAction::executeAction(char* inputString) {
-  useCase->configure(atol(extractArguments(inputString)));
+  controller->configureTime(atol(extractArguments(inputString)));
   usbController->sendString(OK);
 }
 

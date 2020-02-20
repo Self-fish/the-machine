@@ -6,14 +6,10 @@ MachineConfigurationInyector::MachineConfigurationInyector() {}
 
 MachineConfigurationAction* MachineConfigurationInyector::getMachineConfigurationAction() {
   if(actionInstance == 0) {
-    actionInstance = new MachineConfigurationAction(getMachineConfigurationUseCase(),
+    actionInstance = new MachineConfigurationAction(getTimeController(),
       getUsbController());
   }
   return actionInstance;
-}
-
-MachineConfigurationUseCase* MachineConfigurationInyector::getMachineConfigurationUseCase() {
-  return new MachineConfigurationUseCase(getTimeController());
 }
 
 TimeController* MachineConfigurationInyector::getTimeController() {

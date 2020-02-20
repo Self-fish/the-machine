@@ -5,6 +5,8 @@
 #include "../../lib/DallasTemperature/DallasTemperature.h"
 #include "../../lib/OneWire/OneWire.h"
 
+#define WATER_TEMPERATURE_PIN 10
+
 class ReadWaterTemperatureController {
 
 public:
