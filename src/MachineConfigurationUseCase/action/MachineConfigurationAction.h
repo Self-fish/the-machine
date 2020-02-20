@@ -4,7 +4,6 @@
 #include "Arduino.h"
 #include "../../core/action/Action.cpp"
 #include "../controller/TimeController.h"
-//#include "../domain/MachineConfigurationUseCase.h"
 
 const char CONFIGURE_ACTION[4] = "CON";
 

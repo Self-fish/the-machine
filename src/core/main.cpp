@@ -28,25 +28,10 @@ void setup() {
 }
 
 void loop() {
-  /*char charAction[100];
+  char charAction[100];
   if(Serial.available()) {
     String actionString = Serial.readString();
     actionString.toCharArray(charAction, 100);
     executeAction(charAction);
-  }*/
-  Serial.println(freeMemory());
-  executeAction("L_N");
-  executeAction("L_G");
-  delay(1000);
-  executeAction("L_F");
-  executeAction("L_G");
-  delay(1000);
-  executeAction("CON:12345678");
-  delay(1000);
-  executeAction("H_U");
-  delay(1000);
-  executeAction("T_U");
-  delay(1000);
-  executeAction("W_U");
-  delay(1000);
+  }
 }

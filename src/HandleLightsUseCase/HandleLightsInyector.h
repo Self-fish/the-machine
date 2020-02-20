@@ -12,7 +12,6 @@ public:
 
 private:
   static HandleLightsAction* actionInstance;
-  //HandleLightsUseCase* getHandleLightsUseCase();
 };
 
 

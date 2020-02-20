@@ -4,7 +4,6 @@
 #include "Arduino.h"
 #include "../../core/action/Action.cpp"
 #include "../controller/LightsController.h"
-//#include "../domain/HandleLightsUseCase.h"
 
 const char LIGHT_ON_ACTION[4] = "L_N";
 const char LIGHT_OFF_ACTION[4] = "L_F";

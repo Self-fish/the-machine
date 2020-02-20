@@ -5,7 +5,6 @@ ShowBoxHumidityUseCase::ShowBoxHumidityUseCase(
     BoxHumidityScreenController* sController){
   humidityController = hController;
   screenController = sController;
-
 }
 
 void ShowBoxHumidityUseCase::printHumidity() {

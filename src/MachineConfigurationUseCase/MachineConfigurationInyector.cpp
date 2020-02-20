@@ -12,10 +12,6 @@ MachineConfigurationAction* MachineConfigurationInyector::getMachineConfiguratio
   return actionInstance;
 }
 
-/*MachineConfigurationUseCase* MachineConfigurationInyector::getMachineConfigurationUseCase() {
-  return new MachineConfigurationUseCase(getTimeController());
-}*/
-
 TimeController* MachineConfigurationInyector::getTimeController() {
   return new TimeController();
 }

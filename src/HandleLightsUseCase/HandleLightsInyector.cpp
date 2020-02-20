@@ -12,10 +12,6 @@ HandleLightsAction* HandleLightsInyector::getHandleLightsAction() {
   return actionInstance;
 }
 
-/*HandleLightsUseCase* HandleLightsInyector::getHandleLightsUseCase() {
-  return new HandleLightsUseCase(getLightsController());
-}*/
-
 LightsController* HandleLightsInyector::getLightsController() {
   return new LightsController();
 }
