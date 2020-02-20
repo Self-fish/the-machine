@@ -3,11 +3,11 @@
 LightsController::LightsController(){}
 
 void LightsController::turnOnLights() {
-  digitalWrite(LIGHTS_PIN, HIGH);
+  digitalWrite(LIGHTS_PIN, LOW);
 }
 
 void LightsController::turnOffLights() {
-  digitalWrite(LIGHTS_PIN, LOW);
+  digitalWrite(LIGHTS_PIN, HIGH);
 }
 
 int LightsController::lightsStatus() {

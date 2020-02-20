@@ -23,6 +23,7 @@ void setup() {
   lcd.begin();
   lcd.backlight();
   pinMode(LIGHTS_PIN, OUTPUT);
+  digitalWrite(LIGHTS_PIN, HIGH);
   actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
   executeAction("S_W");
 }
