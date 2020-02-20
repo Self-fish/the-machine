@@ -3,18 +3,19 @@
 
 #include "Arduino.h"
 #include "../../core/action/Action.cpp"
-#include "../domain/MachineConfigurationUseCase.h"
+#include "../controller/TimeController.h"
+//#include "../domain/MachineConfigurationUseCase.h"
 
 const char CONFIGURE_ACTION[4] = "CON";
 
 class MachineConfigurationAction: public Action {
 public:
-  MachineConfigurationAction(MachineConfigurationUseCase* machineConfigUseCase,
+  MachineConfigurationAction(TimeController* c,
     UsbController* uController);
   void executeAction(char* inputString);
 
 private:
-  MachineConfigurationUseCase* useCase;
+  TimeController* controller;
   char* extractArguments(char action[100]);
 };
 

@@ -11,7 +11,7 @@ public:
 
 private:
   static MachineConfigurationAction* actionInstance;
-  MachineConfigurationUseCase* getMachineConfigurationUseCase();
+  //MachineConfigurationUseCase* getMachineConfigurationUseCase();
   TimeController* getTimeController();
 };
 

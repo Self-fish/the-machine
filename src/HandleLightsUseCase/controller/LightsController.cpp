@@ -1,8 +1,6 @@
 #include "LightsController.h"
 
-LightsController::LightsController(){
-
-}
+LightsController::LightsController(){}
 
 void LightsController::turnOnLights() {
   digitalWrite(LIGHTS_PIN, HIGH);
