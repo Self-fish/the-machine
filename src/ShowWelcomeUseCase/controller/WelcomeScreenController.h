@@ -29,6 +29,7 @@ private:
   void paintFishBank(int startingColumn);
   void createLoadingAnimation();
   void paintLoadingBar(int percentaje);
+  void freeResources();
 };
 
 

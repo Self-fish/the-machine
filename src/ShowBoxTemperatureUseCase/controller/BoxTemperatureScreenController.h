@@ -15,6 +15,7 @@ public:
 private:
   LCDController* lcdController;
   byte fire[8] = {B00100,B01010,B01010,B01110,B01110,B11111,B11111,B01110};
+  void freeResources();
 };
 
 

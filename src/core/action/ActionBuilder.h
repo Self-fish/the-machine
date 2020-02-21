@@ -1,32 +1,41 @@
 #ifndef ActionBuilder_h
 #define ActionBuilder_h
 
-#include "../../ShowBoxHumidityUseCase/ShowBoxHumidityInyector.h"
-#include "../../ShowBoxTemperatureUseCase/ShowBoxTemperatureInyector.h"
-#include "../../ShowWelcomeUseCase/ShowWelcomeInyector.h"
-#include "../../ShowMainScreenUseCase/ShowMainScreenInyector.h"
-#include "../../MachineConfigurationUseCase/MachineConfigurationInyector.h"
-#include "../../ShowWaterTemperatureUseCase/ShowWaterTemperatureInyector.h"
-#include "../../HandleLightsUseCase/HandleLightsInyector.h"
+
 #include "../controller/CurrentStatusController.h"
+
+
+#include "../../HandleLightsUseCase/action/HandleLightsAction.h"
+#include "../../HandleWaterTempUseCase/action/HandleWaterTempAction.h"
+#include "../../MachineConfigurationUseCase/action/MachineConfigurationAction.h"
+#include "../../ShowBoxHumidityUseCase/action/ShowBoxHumidityAction.h"
+#include "../../ShowBoxTemperatureUseCase/action/ShowBoxTemperatureAction.h"
+#include "../../ShowWaterTemperatureUseCase/action/ShowWaterTemperatureAction.h"
+#include "../../ShowWelcomeUseCase/action/ShowWelcomeAction.h"
+
 
 class ActionBuilder {
 public:
   ActionBuilder();
   Action* build(char* action);
-  void initialise(LiquidCrystal_I2C* lcd,
-    DHT* humiditySensor, DallasTemperature* temperatureSensor);
+  void initialise(LiquidCrystal_I2C* l,
+    DHT* hSensor, DallasTemperature* temperatureSensor);
 
 private:
-  static CurrentStatusController* currentStatusController;
-  ShowBoxHumidityInyector boxHumidityInyector;
+  DallasTemperature* temptSensor;
+  DHT* humiditySensor;
+  LiquidCrystal_I2C *lcd;
+  CurrentStatusController* currentStatusController;
+  //static CurrentStatusController* currentStatusController;
+  /*ShowBoxHumidityInyector boxHumidityInyector;
   ShowWelcomeInyector welcomeInyector;
   ShowMainScreenInyector mainScreenInyector;
   MachineConfigurationInyector configurationInyector;
   ShowBoxTemperatureInyector boxTemperatureInyector;
   ShowWaterTemperatureInyector waterTemperatureInyector;
-  HandleLightsInyector handleLightsInyector;
-  CurrentStatusController* getStatusControllerInstance();
+  HandleLightsInyector handleLightsInyector;*/
+  //HandleWaterTempInyector handleWaterTempInyector;
+  //CurrentStatusController* getStatusControllerInstance();
 
 
 };

@@ -18,6 +18,7 @@ public:
 private:
   ShowBoxTemperatureUseCase* temperatureUseCase;
   ShowMainScreenUseCase* mainScreenUseCase;
+  void freeResources();
 };
 
 

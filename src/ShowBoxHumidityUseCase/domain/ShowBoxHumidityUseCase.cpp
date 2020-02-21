@@ -13,8 +13,14 @@ void ShowBoxHumidityUseCase::printHumidity() {
   roundHumidity(humidityController->readHumidity(), humidity);
   screenController->printBoxHumidity(humidity);
   free(humidity);
+  freeResources();
 }
 
 void ShowBoxHumidityUseCase::roundHumidity(double humidity, char* result) {
   dtostrf(humidity, 3, 1, result);
+}
+
+void ShowBoxHumidityUseCase::freeResources() {
+  free(humidityController);
+  free(screenController);
 }

@@ -11,6 +11,7 @@ public:
 
 private:
   WelcomeScreenController* welcomeScreenController;
+  void freeResources();
 };
 
 

@@ -11,4 +11,11 @@ void ShowBoxHumidityAction::executeAction(char* inputString) {
     mainScreenUseCase->showScreen();
     humidityUseCase->printHumidity();
     usbController->sendString(OK);
+    freeResources();
+}
+
+void ShowBoxHumidityAction::freeResources() {
+  free(humidityUseCase);
+  free(mainScreenUseCase);
+  free(usbController);
 }

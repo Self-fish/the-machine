@@ -14,6 +14,7 @@ public:
 private:
   MainScreenController* mainScreenController;
   GetTimeController* timeController;
+  void freeResources();
 
 };
 

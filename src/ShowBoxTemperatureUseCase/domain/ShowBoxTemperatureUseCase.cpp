@@ -14,8 +14,14 @@ void ShowBoxTemperatureUseCase::printBoxTemperature() {
   roundTemperature(temperatureController->readTemperature(), temperature);
   screenController->printBoxTemperature(temperature);
   free(temperature);
+  freeResources();
 }
 
 void ShowBoxTemperatureUseCase::roundTemperature(double humidity, char* result) {
   dtostrf(humidity, 3, 1, result);
+}
+
+void ShowBoxTemperatureUseCase::freeResources() {
+  free(temperatureController);
+  free(screenController);
 }

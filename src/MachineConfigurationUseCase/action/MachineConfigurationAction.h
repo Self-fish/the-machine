@@ -16,6 +16,7 @@ public:
 private:
   TimeController* controller;
   char* extractArguments(char action[100]);
+  void freeResources();
 };
 
 

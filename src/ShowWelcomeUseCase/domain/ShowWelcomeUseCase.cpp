@@ -9,4 +9,9 @@ void ShowWelcomeUseCase::showScreen() {
   welcomeScreenController->printWelcomeMessage();
   delay(1000);
   welcomeScreenController->printLoading();
+  freeResources();
+}
+
+void ShowWelcomeUseCase::freeResources() {
+  free(welcomeScreenController);
 }

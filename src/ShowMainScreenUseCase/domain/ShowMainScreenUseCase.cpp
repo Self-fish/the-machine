@@ -11,4 +11,10 @@ void ShowMainScreenUseCase::showScreen() {
   mainScreenController->createScreen();
   mainScreenController->printDate(timeController->getCurrentTime(),
     timeController->getCurrentDate());
+  freeResources();
+}
+
+void ShowMainScreenUseCase::freeResources() {
+  free(mainScreenController);
+  free(timeController);
 }

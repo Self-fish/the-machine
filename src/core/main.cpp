@@ -13,6 +13,7 @@ ActionBuilder actionBuilder = ActionBuilder();
 void executeAction(char actionString[100]) {
   action = actionBuilder.build(actionString);
   action->executeAction(actionString);
+  free(action);
 }
 
 void setup() {
@@ -24,6 +25,8 @@ void setup() {
   lcd.backlight();
   pinMode(LIGHTS_PIN, OUTPUT);
   digitalWrite(LIGHTS_PIN, HIGH);
+  pinMode(WATER_TEMP_PIN, OUTPUT);
+  digitalWrite(WATER_TEMP_PIN, HIGH);
   actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
   executeAction("S_W");
 }

@@ -7,4 +7,10 @@ UsbController* uController) : Action(uController){
 
 void ShowWelcomeAction::executeAction(char* inputString) {
     useCase->showScreen();
+    freeResources();
+}
+
+void ShowWelcomeAction::freeResources() {
+  free(useCase);
+  free(usbController);
 }

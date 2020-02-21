@@ -16,6 +16,7 @@ private:
   ReadHumidityController* humidityController;
   BoxHumidityScreenController* screenController;
   void roundHumidity(double humidity, char* result);
+  void freeResources();
 };
 
 
