@@ -14,6 +14,7 @@ public:
   void configureSpecialCharacters();
   void createScreen();
   void printDate(String hour, String date);
+  void freeResources();
 
 private:
   LCDController* lcdController;

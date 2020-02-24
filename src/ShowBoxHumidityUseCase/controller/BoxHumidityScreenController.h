@@ -12,9 +12,11 @@ public:
   void printBoxHumidity(char* humidity);
   void configureSpecialCharacters();
 
+
 private:
   LCDController* lcdController;
   byte waterDrop[8] = {B00100,B00100,B01010,B01010,B10001,B10001,B10001,B01110};
+  void freeResources();
 };
 
 

@@ -16,6 +16,7 @@ void WelcomeScreenController::printLoading() {
   lcdController->cleanScreen();
   paintFishBank(3);
   createLoadingAnimation();
+  freeResources();
 }
 
 void WelcomeScreenController::configureSpecialCharacters() {
@@ -86,5 +87,8 @@ void WelcomeScreenController::paintLoadingBar(int percentaje) {
   } else {
     lcdController->printText(15, 3, String(percentajeInt) + "%");
   }
+}
 
+void WelcomeScreenController::freeResources() {
+  free(lcdController);
 }

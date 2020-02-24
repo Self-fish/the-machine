@@ -17,6 +17,7 @@ public:
 private:
   ShowWaterTemperatureUseCase* temperatureUseCase;
   ShowMainScreenUseCase* mainScreenUseCase;
+  void freeResources();
 };
 
 

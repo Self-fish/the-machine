@@ -14,8 +14,14 @@ void ShowWaterTemperatureUseCase::printWaterTemperature() {
   screenController->configureSpecialCharacters();
   screenController->printWaterTemperature(temperature);
   free(temperature);
+  freeResources();
 }
 
 void ShowWaterTemperatureUseCase::roundTemperature(double humidity, char* result) {
   dtostrf(humidity, 3, 1, result);
+}
+
+void ShowWaterTemperatureUseCase::freeResources() {
+  free(temperatureController);
+  free(screenController);
 }

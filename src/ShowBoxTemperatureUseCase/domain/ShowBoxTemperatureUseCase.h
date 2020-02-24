@@ -16,6 +16,7 @@ private:
   ReadTemperatureController* temperatureController;
   BoxTemperatureScreenController* screenController;
   void roundTemperature(double humidity, char* result);
+  void freeResources();
 };
 
 

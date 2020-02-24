@@ -17,6 +17,7 @@ public:
 private:
   ShowBoxHumidityUseCase* humidityUseCase;
   ShowMainScreenUseCase* mainScreenUseCase;
+  void freeResources();
 };
 
 

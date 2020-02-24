@@ -1,51 +1,51 @@
 #include "ActionBuilder.h"
 
-CurrentStatusController* ActionBuilder::currentStatusController = 0;
-
 ActionBuilder::ActionBuilder() {
-  boxHumidityInyector = ShowBoxHumidityInyector();
-  welcomeInyector = ShowWelcomeInyector();
-  mainScreenInyector = ShowMainScreenInyector();
-  configurationInyector = MachineConfigurationInyector();
-  boxTemperatureInyector = ShowBoxTemperatureInyector();
-  waterTemperatureInyector = ShowWaterTemperatureInyector();
-  handleLightsInyector = HandleLightsInyector();
+  currentStatusController = new CurrentStatusController();
 }
 
 Action* ActionBuilder::build(char* input) {
   if(strstr(input, UPDATE_HUMIDITY_ACTION) != NULL) {
-    return boxHumidityInyector.getBoxHumidityAction();
+    return new ShowBoxHumidityAction(new ShowBoxHumidityUseCase(
+      new ReadHumidityController(humiditySensor),
+      new BoxHumidityScreenController(new LCDController(lcd))),
+      new ShowMainScreenUseCase(new MainScreenController(new LCDController(lcd),
+      currentStatusController), new GetTimeController()), new UsbController());
   } else if(strstr(input, SHOW_WELCOME_SCREEN_ACTION) != NULL) {
-    return welcomeInyector.getShowWelcomeAction();
+    return new ShowWelcomeAction(new ShowWelcomeUseCase(new WelcomeScreenController(
+      new LCDController(lcd), currentStatusController)), new UsbController());
   } else if(strstr(input, CONFIGURE_ACTION) != NULL) {
-    return configurationInyector.getMachineConfigurationAction();
+    return new MachineConfigurationAction(new TimeController(),
+      new UsbController());
   } else if(strstr(input, UPDATE_TEMPERATURE_ACTION) != NULL) {
-    return boxTemperatureInyector.getBoxTemperatureAction();
+    return new ShowBoxTemperatureAction(new ShowBoxTemperatureUseCase(new ReadTemperatureController(humiditySensor),
+      new BoxTemperatureScreenController(new LCDController(lcd))),
+      new ShowMainScreenUseCase(new MainScreenController(new LCDController(lcd),
+      currentStatusController), new GetTimeController()),
+      new UsbController());
   } else if(strstr(input, UPDATE_WATER_TEMPERATURE_ACTION) != NULL) {
-    return waterTemperatureInyector.getWaterTemperatureAction();
+    return new ShowWaterTemperatureAction(new ShowWaterTemperatureUseCase(new ReadWaterTemperatureController(temptSensor),
+      new WaterTemperatureScreenController(new LCDController(lcd))),
+      new ShowMainScreenUseCase(new MainScreenController(new LCDController(lcd),
+      currentStatusController), new GetTimeController()),
+      new UsbController());
   } else if(strstr(input, LIGHT_ON_ACTION) != NULL ||
       strstr(input, LIGHT_OFF_ACTION) != NULL ||
       strstr(input, LIGHT_GET_ACTION) != NULL) {
-    return handleLightsInyector.getHandleLightsAction();
+    return new HandleLightsAction(new RelayController(LIGHTS_PIN),
+      new UsbController());
+  } else if(strstr(input, WATER_ON_ACTION) != NULL ||
+      strstr(input, WATER_OFF_ACTION) != NULL ||
+      strstr(input, WATER_GET_ACTION) != NULL) {
+    return new HandleWaterTempAction(new RelayController(WATER_TEMP_PIN),
+      new UsbController(), new ReadWaterTemperatureController(temptSensor));
   }
 }
 
 void ActionBuilder::initialise(
-    LiquidCrystal_I2C* lcd, DHT* humiditySensor,
+    LiquidCrystal_I2C* l, DHT* hSensor,
     DallasTemperature* temperatureSensor) {
-  mainScreenInyector.initialise(lcd, getStatusControllerInstance());
-  boxHumidityInyector.initialise(lcd, humiditySensor,
-    mainScreenInyector.getShowMainScreenUseCase(), getStatusControllerInstance());
-  welcomeInyector.initialise(lcd, getStatusControllerInstance());
-  boxTemperatureInyector.initialise(lcd, humiditySensor,
-    mainScreenInyector.getShowMainScreenUseCase(), getStatusControllerInstance());
-  waterTemperatureInyector.initialise(lcd, mainScreenInyector.getShowMainScreenUseCase(),
-    getStatusControllerInstance(), temperatureSensor);
-}
-
-CurrentStatusController* ActionBuilder::getStatusControllerInstance() {
-  if(currentStatusController == 0) {
-    currentStatusController = new CurrentStatusController();
-  }
-  return currentStatusController;
+  temptSensor = temperatureSensor;
+  humiditySensor = hSensor;
+  lcd = l;
 }

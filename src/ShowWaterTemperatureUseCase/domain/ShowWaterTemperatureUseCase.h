@@ -16,6 +16,7 @@ private:
   ReadWaterTemperatureController* temperatureController;
   WaterTemperatureScreenController* screenController;
   void roundTemperature(double temperature, char* result);
+  void freeResources();
 };
 
 

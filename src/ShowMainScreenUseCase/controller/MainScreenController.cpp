@@ -36,4 +36,9 @@ void MainScreenController::paintAnchor(int column, int row) {
 void MainScreenController::printDate(String hour, String date) {
   lcdController->printText(1, 0, hour);
   lcdController->printText(8, 0, date);
+  freeResources();
+}
+
+void MainScreenController::freeResources() {
+  free(lcdController);
 }
