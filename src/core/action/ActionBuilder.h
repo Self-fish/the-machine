@@ -1,10 +1,7 @@
 #ifndef ActionBuilder_h
 #define ActionBuilder_h
 
-
 #include "../controller/CurrentStatusController.h"
-
-
 #include "../../HandleLightsUseCase/action/HandleLightsAction.h"
 #include "../../HandleWaterTempUseCase/action/HandleWaterTempAction.h"
 #include "../../MachineConfigurationUseCase/action/MachineConfigurationAction.h"
@@ -12,7 +9,6 @@
 #include "../../ShowBoxTemperatureUseCase/action/ShowBoxTemperatureAction.h"
 #include "../../ShowWaterTemperatureUseCase/action/ShowWaterTemperatureAction.h"
 #include "../../ShowWelcomeUseCase/action/ShowWelcomeAction.h"
-
 
 class ActionBuilder {
 public:
@@ -26,17 +22,6 @@ private:
   DHT* humiditySensor;
   LiquidCrystal_I2C *lcd;
   CurrentStatusController* currentStatusController;
-  //static CurrentStatusController* currentStatusController;
-  /*ShowBoxHumidityInyector boxHumidityInyector;
-  ShowWelcomeInyector welcomeInyector;
-  ShowMainScreenInyector mainScreenInyector;
-  MachineConfigurationInyector configurationInyector;
-  ShowBoxTemperatureInyector boxTemperatureInyector;
-  ShowWaterTemperatureInyector waterTemperatureInyector;
-  HandleLightsInyector handleLightsInyector;*/
-  //HandleWaterTempInyector handleWaterTempInyector;
-  //CurrentStatusController* getStatusControllerInstance();
-
 
 };
 
