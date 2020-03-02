@@ -9,6 +9,7 @@
 #include "../../ShowBoxTemperatureUseCase/action/ShowBoxTemperatureAction.h"
 #include "../../ShowWaterTemperatureUseCase/action/ShowWaterTemperatureAction.h"
 #include "../../ShowWelcomeUseCase/action/ShowWelcomeAction.h"
+#include "../../HandleAlertsUseCase/action/HandleAlertsAction.h"
 
 class ActionBuilder {
 public:

@@ -5,7 +5,7 @@
 #include "../../core/action/Action.cpp"
 #include "../domain/HandleAlertsUseCase.h"
 
-const char SHOW_ALERTS_ACTION[4] = "T_U";
+const char SHOW_ALERTS_ACTION[4] = "S_A";
 
 class HandleAlertsAction: public Action {
 

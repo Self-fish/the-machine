@@ -1,9 +1,16 @@
 #include "HandleAlertsUseCase.h"
 
-HandleAlertsUseCase::HandleAlertsUseCase() {}
-
-void HandleAlertsUseCase::showAlert(char *alert) {
-
+HandleAlertsUseCase::HandleAlertsUseCase(AlertsScreenController* sController) {
+  screenContrller = sController;
 }
 
-void HandleAlertsUseCase::freeResources() {}
+void HandleAlertsUseCase::showAlert(char *alert) {
+  screenContrller->configureSpecialCharacters();
+  screenContrller->createScreen();
+  screenContrller->printAlert(alert);
+  freeResources();
+}
+
+void HandleAlertsUseCase::freeResources() {
+  free(screenContrller);
+}

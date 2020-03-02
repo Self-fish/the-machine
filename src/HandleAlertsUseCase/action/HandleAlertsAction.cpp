@@ -7,11 +7,12 @@ HandleAlertsAction::HandleAlertsAction(UsbController* uController,
 
 
 void HandleAlertsAction::executeAction(char *inputString) {
-  useCase->showAlert("Alert to show");
+  useCase->showAlert("Alert");
   usbController->sendString(OK);
   freeResources();
 }
 
 void HandleAlertsAction::freeResources() {
   free(usbController);
+  free(useCase);
 }

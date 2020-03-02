@@ -14,6 +14,7 @@ void executeAction(char actionString[100]) {
   action = actionBuilder.build(actionString);
   action->executeAction(actionString);
   free(action);
+  Serial.println(freeMemory());
 }
 
 void setup() {
@@ -32,10 +33,13 @@ void setup() {
 }
 
 void loop() {
-  char charAction[100];
+  executeAction("S_A");
+  delay(100000);
+
+  /*char charAction[100];
   if(Serial.available()) {
     String actionString = Serial.readString();
     actionString.toCharArray(charAction, 100);
     executeAction(charAction);
-  }
+  }*/
 }
