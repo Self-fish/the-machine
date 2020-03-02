@@ -6,6 +6,7 @@ WaterTemperatureScreenController::WaterTemperatureScreenController(LCDController
 
 void WaterTemperatureScreenController::printWaterTemperature(char* temperature) {
   lcdController->writeCharacter(6, 9, 2);
+  lcdController->printText(11, 2, "         ");
   lcdController->printText(11, 2, "= " + String(temperature) + "C");
   freeResources();
 }
