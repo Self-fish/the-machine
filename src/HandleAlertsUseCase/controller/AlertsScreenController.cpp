@@ -17,10 +17,11 @@ void AlertsScreenController::configureSpecialCharacters() {
   lcdController->createSpecialCharacters(warning7, 7);
 }
 
-void AlertsScreenController::createScreen() {
-  lcdController->cleanScreen();
-  paintSignal(3, 1);
+void AlertsScreenController::createScreen(String hour, String date) {
   currentStatusController->setIsMainScreenActive(false);
+  lcdController->cleanScreen();
+  lcdController->printText(1, 0, hour);
+  lcdController->printText(8, 0, date);
 }
 
 void AlertsScreenController::paintSignal(int column, int row) {
@@ -35,9 +36,19 @@ void AlertsScreenController::paintSignal(int column, int row) {
   lcdController->writeCharacter(7, column+2, row+2);
 }
 
-void AlertsScreenController::printAlert(String alert) {
-  lcdController->printText(7, 2, alert);
+void AlertsScreenController::hideAlert() {
+  lcdController->cleanRow(1);
+  lcdController->cleanRow(2);
+  lcdController->cleanRow(3);
+}
+
+void AlertsScreenController::finishAlert() {
   freeResources();
+}
+
+void AlertsScreenController::printAlert(String alert) {
+  paintSignal(3, 1);
+  lcdController->printText(6, 2, alert);
 }
 
 void AlertsScreenController::freeResources() {

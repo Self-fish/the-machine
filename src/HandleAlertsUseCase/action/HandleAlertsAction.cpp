@@ -7,7 +7,7 @@ HandleAlertsAction::HandleAlertsAction(UsbController* uController,
 
 
 void HandleAlertsAction::executeAction(char *inputString) {
-  useCase->showAlert("Alert");
+  useCase->showAlert("Change water!");
   usbController->sendString(OK);
   freeResources();
 }

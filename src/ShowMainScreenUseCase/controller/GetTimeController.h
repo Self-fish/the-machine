@@ -4,7 +4,6 @@
 #include "Arduino.h"
 #include "../../../lib/TimeLib/TimeLib.h"
 
-
 class GetTimeController {
 
 public:

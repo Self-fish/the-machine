@@ -41,7 +41,8 @@ Action* ActionBuilder::build(char* input) {
       new UsbController(), new ReadWaterTemperatureController(temptSensor));
   } else if(strstr(input, SHOW_ALERTS_ACTION) != NULL) {
     return new HandleAlertsAction(new UsbController(),
-      new HandleAlertsUseCase(new AlertsScreenController(new LCDController(lcd), currentStatusController)));
+      new HandleAlertsUseCase(new AlertsScreenController(new LCDController(lcd), currentStatusController),
+        new GetTimeController()));
   }
 }
 

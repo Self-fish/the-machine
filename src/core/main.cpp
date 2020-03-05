@@ -29,7 +29,7 @@ void setup() {
   pinMode(WATER_TEMP_PIN, OUTPUT);
   digitalWrite(WATER_TEMP_PIN, HIGH);
   actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
-  executeAction("S_W");
+  //executeAction("S_W");
 }
 
 void loop() {
