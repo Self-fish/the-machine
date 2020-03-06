@@ -46,7 +46,7 @@ void AlertsScreenController::finishAlert() {
   freeResources();
 }
 
-void AlertsScreenController::printAlert(String alert) {
+void AlertsScreenController::printAlert(char* alert) {
   paintSignal(3, 1);
   lcdController->printText(6, 2, alert);
 }

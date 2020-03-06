@@ -28,13 +28,15 @@ void setup() {
   digitalWrite(LIGHTS_PIN, HIGH);
   pinMode(WATER_TEMP_PIN, OUTPUT);
   digitalWrite(WATER_TEMP_PIN, HIGH);
+  pinMode(BUTTON_PIN, INPUT);
+  digitalWrite(BUTTON_PIN, HIGH);
   actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
   //executeAction("S_W");
 }
 
 void loop() {
   executeAction("S_A");
-  delay(100000);
+  delay(1000);
 
   /*char charAction[100];
   if(Serial.available()) {

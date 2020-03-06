@@ -13,7 +13,7 @@ public:
     CurrentStatusController* statusC);
   void configureSpecialCharacters();
   void createScreen(String hour, String date);
-  void printAlert(String alert);
+  void printAlert(char* alert);
   void hideAlert();
   void finishAlert();
   void freeResources();

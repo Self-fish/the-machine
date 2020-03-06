@@ -6,6 +6,7 @@
 #define OK "OK"
 #define ON "ON"
 #define OFF "OFF"
+#define LATER_RESPONSE "LAT"
 
 class UsbController {
 public:

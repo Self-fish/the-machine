@@ -26,3 +26,8 @@ void LCDController::cleanRow(int row) {
   lcd->setCursor(0, row);
   lcd->print("                    ");
 }
+
+void LCDController::cleanCharacter(int row, int column) {
+  lcd->setCursor(row, column);
+  lcd->print(" ");
+}

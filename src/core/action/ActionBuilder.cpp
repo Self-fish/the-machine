@@ -42,7 +42,8 @@ Action* ActionBuilder::build(char* input) {
   } else if(strstr(input, SHOW_ALERTS_ACTION) != NULL) {
     return new HandleAlertsAction(new UsbController(),
       new HandleAlertsUseCase(new AlertsScreenController(new LCDController(lcd), currentStatusController),
-        new GetTimeController()));
+        new GetTimeController(), new JoystickController(),
+        new AlertMenuScreenController(new LCDController(lcd))));
   }
 }
 

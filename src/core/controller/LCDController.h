@@ -13,6 +13,7 @@ public:
   void writeCharacter(int position, int column, int row);
   void cleanScreen();
   void cleanRow(int row);
+  void cleanCharacter(int row, int column);
 
 private:
   LiquidCrystal_I2C* lcd;
