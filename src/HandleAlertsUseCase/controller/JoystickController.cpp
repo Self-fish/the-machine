@@ -13,9 +13,11 @@ boolean JoystickController::wasButtonPressed() {
 }
 
 int JoystickController::readX() {
-  if(analogRead(VRY_PIN) > 200) {
+int value = analogRead(VRY_PIN);
+  Serial.println(value);
+  if(value > 200) {
     return DOWN;
-  } else if(analogRead(VRY_PIN) < 10) {
+  } else if(value < 10) {
     return UP;
   } else {
     return MIDDLE;

@@ -23,6 +23,8 @@ void MainScreenController::configureSpecialCharacters() {
   lcdController->createSpecialCharacters(anchor5, 5);
 }
 
+
+
 void MainScreenController::paintAnchor(int column, int row) {
   lcdController->writeCharacter(0, column, row);
   lcdController->writeCharacter(1, column-1, row+1);

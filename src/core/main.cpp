@@ -31,13 +31,20 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT);
   digitalWrite(BUTTON_PIN, HIGH);
   actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
-  //executeAction("S_W");
+  executeAction("S_W");
 }
 
 void loop() {
-  executeAction("S_A");
+  executeAction("R_A:Alert1");
   delay(1000);
-
+  executeAction("R_A:Alert2");
+  delay(1000);
+  executeAction("R_A:Alert3");
+  delay(1000);
+  executeAction("R_A:Alert4");
+  delay(5000);
+  executeAction("S_A");
+  delay(5000);
   /*char charAction[100];
   if(Serial.available()) {
     String actionString = Serial.readString();

@@ -16,13 +16,13 @@ int HandleAlertsUseCase::showAlert(char *alert) {
     timeController->getCurrentDate());
   screenContrller->printAlert(alert);
   blinkAlert(alert, true, millis(), true);
-  menuController->showMenu();
-  delay(500);
-  handleMenu();
+  //menuController->showMenu();
+  //delay(500);
+  //handleMenu();
   menuController->closeMenu();
-  if(menuController->getMenuPosition() == 1) {
-    result = LATER;
-  }
+  //if(menuController->getMenuPosition() == 1) {
+  //  result = LATER;
+  //}
   freeResources();
   return result;
 }

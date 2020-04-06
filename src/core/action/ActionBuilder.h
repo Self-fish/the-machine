@@ -10,6 +10,7 @@
 #include "../../ShowWaterTemperatureUseCase/action/ShowWaterTemperatureAction.h"
 #include "../../ShowWelcomeUseCase/action/ShowWelcomeAction.h"
 #include "../../HandleAlertsUseCase/action/HandleAlertsAction.h"
+#include "../../ShowAlertsUseCase/action/ShowAlertsAction.h"
 
 class ActionBuilder {
 public:
@@ -23,6 +24,7 @@ private:
   DHT* humiditySensor;
   LiquidCrystal_I2C *lcd;
   CurrentStatusController* currentStatusController;
+  AlertsController* alertsController;
 
 };
 

@@ -4,17 +4,20 @@
 #include "Arduino.h"
 #include "../../core/action/Action.cpp"
 #include "../domain/HandleAlertsUseCase.h"
+#include "../domain/StoreAlertUseCase.h"
 
-const char SHOW_ALERTS_ACTION[4] = "S_A";
+const char RECEIVE_ALERTS_ACTION[4] = "R_A";
 
 class HandleAlertsAction: public Action {
 
 public:
-  HandleAlertsAction(UsbController* uController, HandleAlertsUseCase* uCase);
+  HandleAlertsAction(UsbController* uController,
+    StoreAlertUseCase* storeUseCase);
   void executeAction(char* inputString);
 
 private:
-  HandleAlertsUseCase* useCase;
+  StoreAlertUseCase* storeAlertUseCase;
+  char* extractArguments(char *action);
   void freeResources();
 
 };
