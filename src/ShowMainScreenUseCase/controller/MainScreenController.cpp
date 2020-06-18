@@ -9,30 +9,53 @@ MainScreenController::MainScreenController(LCDController* controller,
 void MainScreenController::createScreen() {
   if(!statusController->isMainScreenActive()) {
     lcdController->cleanScreen();
-    paintAnchor(3, 1);
+    paintIcon(3, 1);
     statusController->setIsMainScreenActive(true);
   }
 }
 
 void MainScreenController::configureSpecialCharacters() {
-  lcdController->createSpecialCharacters(anchor0, 0);
-  lcdController->createSpecialCharacters(anchor1, 1);
-  lcdController->createSpecialCharacters(anchor2, 2);
-  lcdController->createSpecialCharacters(anchor3, 3);
-  lcdController->createSpecialCharacters(anchor4, 4);
-  lcdController->createSpecialCharacters(anchor5, 5);
+  if(statusController->isAlertSreenActive()) {
+    lcdController->createSpecialCharacters(warning0, 0);
+    lcdController->createSpecialCharacters(warning1, 1);
+    lcdController->createSpecialCharacters(warning2, 2);
+    lcdController->createSpecialCharacters(warning3, 3);
+    lcdController->createSpecialCharacters(warning4, 4);
+    lcdController->createSpecialCharacters(warning5, 5);
+    lcdController->createSpecialCharacters(warning6, 6);
+    lcdController->createSpecialCharacters(warning7, 7);
+  } else {
+    lcdController->createSpecialCharacters(anchor0, 0);
+    lcdController->createSpecialCharacters(anchor1, 1);
+    lcdController->createSpecialCharacters(anchor2, 2);
+    lcdController->createSpecialCharacters(anchor3, 3);
+    lcdController->createSpecialCharacters(anchor4, 4);
+    lcdController->createSpecialCharacters(anchor5, 5);
+  }
+
 }
 
 
-
-void MainScreenController::paintAnchor(int column, int row) {
-  lcdController->writeCharacter(0, column, row);
-  lcdController->writeCharacter(1, column-1, row+1);
-  lcdController->writeCharacter(1, column+1, row+1);
-  lcdController->writeCharacter(2, column, row+1);
-  lcdController->writeCharacter(3, column, row+2);
-  lcdController->writeCharacter(4, column-1, row+2);
-  lcdController->writeCharacter(5, column+1, row+2);
+void MainScreenController::paintIcon(int column, int row) {
+  if(statusController->isAlertSreenActive()) {
+    lcdController->writeCharacter(0, column, row);
+    lcdController->writeCharacter(1, column-1, row+1);
+    lcdController->writeCharacter(2, column, row+1);
+    lcdController->writeCharacter(3, column+1, row+1);
+    lcdController->writeCharacter(4, column-2, row+2);
+    lcdController->writeCharacter(5, column-1, row+2);
+    lcdController->writeCharacter(5, column+1, row+2);
+    lcdController->writeCharacter(6, column, row+2);
+    lcdController->writeCharacter(7, column+2, row+2);
+  } else {
+    lcdController->writeCharacter(0, column, row);
+    lcdController->writeCharacter(1, column-1, row+1);
+    lcdController->writeCharacter(1, column+1, row+1);
+    lcdController->writeCharacter(2, column, row+1);
+    lcdController->writeCharacter(3, column, row+2);
+    lcdController->writeCharacter(4, column-1, row+2);
+    lcdController->writeCharacter(5, column+1, row+2);
+  }
 }
 
 void MainScreenController::printDate(String hour, String date) {

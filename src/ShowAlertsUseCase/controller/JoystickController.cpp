@@ -1,7 +1,9 @@
 #include "JoystickController.h"
 
 
-JoystickController::JoystickController() {}
+JoystickController::JoystickController() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+}
 
 
 boolean JoystickController::wasButtonPressed() {

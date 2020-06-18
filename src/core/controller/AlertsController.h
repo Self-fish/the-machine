@@ -14,6 +14,7 @@ public:
   char** getAllAlerts();
   long unsigned int* getAllTimeStamps();
   void cleanAlerts();
+  int getNumberOfAlerts();
 
 
 private:

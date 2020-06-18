@@ -42,11 +42,11 @@ Action* ActionBuilder::build(char* input) {
       new UsbController(), new ReadWaterTemperatureController(temptSensor));
   } else if(strstr(input, RECEIVE_ALERTS_ACTION) != NULL) {
     return new HandleAlertsAction(new UsbController(),
-      new StoreAlertUseCase(alertsController));
+      new StoreAlertUseCase(alertsController, currentStatusController));
   } else if(strstr(input, SHOW_ALERTS_ACTION) != NULL) {
     return new ShowAlertsAction(new ShowAlertsUseCase(new AlertTimeController(),
       new AlertScreenController(new LCDController(lcd), currentStatusController),
-      alertsController), new UsbController());
+      alertsController, new JoystickController(), currentStatusController), new UsbController());
   }
 }
 

@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 #include "../../core/action/Action.cpp"
-#include "../domain/HandleAlertsUseCase.h"
 #include "../domain/StoreAlertUseCase.h"
 
 const char RECEIVE_ALERTS_ACTION[4] = "R_A";

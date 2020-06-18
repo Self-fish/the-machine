@@ -3,6 +3,7 @@
 HandleLightsAction::HandleLightsAction(RelayController* c,
   UsbController* uController) : Action(uController){
   controller = c;
+  pinMode(LIGHTS_PIN, OUTPUT);
 }
 
 void HandleLightsAction::executeAction(char* inputString) {

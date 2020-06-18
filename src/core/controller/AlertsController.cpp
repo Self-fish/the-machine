@@ -7,11 +7,12 @@ AlertsController::AlertsController() {
 }
 
 void AlertsController::setAlert(char *alert) {
-  Serial.println("Set Alert: ");
-  Serial.print(alert);
-  Serial.println(" ");
+  Serial.println(alert);
   if(!alertAlreadyExist(alert)) {
     addAlert(alert);
+    for(int i=0; i<arrayPos; i++) {
+      Serial.println(alerts[i]);
+    }
   }
 }
 
@@ -22,7 +23,7 @@ void AlertsController::cleanAlerts() {
 }
 
 bool AlertsController::alertAlreadyExist(char *alert) {
-  for(int i=0; i<ALERTS_SIZE; i++) {
+  for(int i=0; i<arrayPos; i++) {
     if(strcmp(alerts[i], alert) == 0) {
       return true;
     }
@@ -31,28 +32,24 @@ bool AlertsController::alertAlreadyExist(char *alert) {
 }
 
 void AlertsController::addAlert(char *alert) {
-  Serial.println("Add Alert");
   if(arrayPos == 3) {
     removeOlderAlert();
   }
   alerts[arrayPos] = alert;
   alertsTimeStamp[arrayPos] = now();
   arrayPos++;
-  Serial.println("Next Position: " + String(arrayPos));
 }
 
 void AlertsController::removeOlderAlert() {
-  Serial.println("Remove alert");
   time_t olderTimestamp = 99999999;
   int positionToDelete = -1;
-  for(int i=0; i<ALERTS_SIZE; i++) {
+  for(int i=0; i<ALERTS_SIZE-1; i++) {
     if(alertsTimeStamp[i] < olderTimestamp) {
       olderTimestamp = alertsTimeStamp[i];
       positionToDelete = i;
     }
   }
 
-  Serial.println("Alert to remove: " + String(positionToDelete));
   for(int i=positionToDelete; i<ALERTS_SIZE-1; i++) {
     alerts[i] = alerts[i+1];
     alertsTimeStamp[i] = alertsTimeStamp[i+1];
@@ -66,4 +63,8 @@ char** AlertsController::getAllAlerts() {
 
 unsigned long int* AlertsController::getAllTimeStamps() {
   return alertsTimeStamp;
+}
+
+int AlertsController::getNumberOfAlerts() {
+  return arrayPos;
 }

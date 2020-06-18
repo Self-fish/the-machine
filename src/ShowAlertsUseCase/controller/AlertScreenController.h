@@ -9,12 +9,14 @@ class AlertScreenController {
 public:
   AlertScreenController(LCDController* lController, CurrentStatusController*
     sController);
-  void printAlert(char* alertText, String alertDate);
+  void printAlert(char* alertText, String alertDate, bool isLastAlert);
+  void freeResources();
 
 private:
   LCDController* lcdController;
   CurrentStatusController* statusController;
-  void freeResources();
+  int calculateFirstCharacterScreenPisition(char* alertText);
+
 
 };
 

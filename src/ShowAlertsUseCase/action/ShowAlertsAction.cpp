@@ -7,6 +7,7 @@ ShowAlertsAction::ShowAlertsAction(ShowAlertsUseCase* uCase,
 
 void ShowAlertsAction::executeAction(char *inputString) {
   useCase->showAlerts();
+  usbController->sendString(OK);
   freeResources();
 }
 

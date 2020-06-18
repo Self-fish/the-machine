@@ -5,6 +5,7 @@ HandleWaterTempAction::HandleWaterTempAction(RelayController* c,
     ReadWaterTemperatureController* tempC) : Action(uController){
   controller = c;
   tempController = tempC;
+  pinMode(WATER_TEMP_PIN, OUTPUT);
 }
 
 void HandleWaterTempAction::executeAction(char* inputString) {

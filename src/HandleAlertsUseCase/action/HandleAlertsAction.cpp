@@ -10,11 +10,6 @@ void HandleAlertsAction::executeAction(char *inputString) {
   char* alertText = extractArguments(inputString);
   storeAlertUseCase->storeAlert(alertText);
   usbController->sendString(OK);
-  /*if(useCase->showAlert(alertText) == DONE){
-    usbController->sendString(OK);
-  } else {
-    usbController->sendString(LATER_RESPONSE);
-  }*/
   freeResources();
 }
 

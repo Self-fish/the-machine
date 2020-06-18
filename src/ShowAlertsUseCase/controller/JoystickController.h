@@ -14,7 +14,6 @@
 class JoystickController {
 
 public:
-
   JoystickController();
   boolean wasButtonPressed();
   int readX();
