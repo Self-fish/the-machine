@@ -6,7 +6,7 @@ HandleAlertsAction::HandleAlertsAction(UsbController* uController,
   storeAlertUseCase = storeUseCase;
 }
 
-void HandleAlertsAction::executeAction(char *inputString) {
+void HandleAlertsAction::executeAction(char* inputString) {
   char* alertText = extractArguments(inputString);
   storeAlertUseCase->storeAlert(alertText);
   usbController->sendString(OK);

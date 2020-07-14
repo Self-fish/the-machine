@@ -2,10 +2,9 @@
 
 ActionBuilder::ActionBuilder() {
   currentStatusController = new CurrentStatusController();
-  alertsController = new AlertsController();
 }
 
-Action* ActionBuilder::build(char* input) {
+Action* ActionBuilder::build(const char* input) {
   if(strstr(input, UPDATE_HUMIDITY_ACTION) != NULL) {
     return new ShowBoxHumidityAction(new ShowBoxHumidityUseCase(
       new ReadHumidityController(humiditySensor),
@@ -42,18 +41,20 @@ Action* ActionBuilder::build(char* input) {
       new UsbController(), new ReadWaterTemperatureController(temptSensor));
   } else if(strstr(input, RECEIVE_ALERTS_ACTION) != NULL) {
     return new HandleAlertsAction(new UsbController(),
-      new StoreAlertUseCase(alertsController, currentStatusController));
+      new StoreAlertUseCase(/*alertsController,*/ currentStatusController));
   } else if(strstr(input, SHOW_ALERTS_ACTION) != NULL) {
     return new ShowAlertsAction(new ShowAlertsUseCase(new AlertTimeController(),
       new AlertScreenController(new LCDController(lcd), currentStatusController),
-      alertsController, new JoystickController(), currentStatusController), new UsbController());
+      /*alertsController, *//*joystickController,*/ currentStatusController), new UsbController());
   }
 }
 
 void ActionBuilder::initialise(
     LiquidCrystal_I2C* l, DHT* hSensor,
-    DallasTemperature* temperatureSensor) {
+    DallasTemperature* temperatureSensor/*,
+    JoystickController* jController*/) {
   temptSensor = temperatureSensor;
   humiditySensor = hSensor;
   lcd = l;
+  //joystickController = jController;
 }

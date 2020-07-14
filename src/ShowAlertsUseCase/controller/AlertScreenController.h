@@ -10,6 +10,7 @@ public:
   AlertScreenController(LCDController* lController, CurrentStatusController*
     sController);
   void printAlert(char* alertText, String alertDate, bool isLastAlert);
+  void printCloseMenu();
   void freeResources();
 
 private:

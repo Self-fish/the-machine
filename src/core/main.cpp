@@ -2,31 +2,40 @@
 #include "action/ActionHandler.h"
 
 ActionHandler* actionHandler;
-JoystickController* joystickController;
+//JoystickController* joystickController;
+//AlertsController* alertsController;
 
 void setup() {
   Serial.begin(9600);
   delay(1000);
-  actionHandler = new ActionHandler();
-  joystickController = new JoystickController();
-  actionHandler->start(3000);
+
+  //joystickController = new JoystickController();
+  //alertsController = new AlertsController();
+  actionHandler = new ActionHandler(/*joystickController*/);
+  //actionHandler->start(3000);
   actionHandler->executeAction("S_W");
-  delay(1000);
-  actionHandler->executeAction("R_A:First alert");
-  delay(1000);
-  actionHandler->executeAction("R_A:Second alert");
-  delay(1000);
-  actionHandler->executeAction("R_A:Third alert");
-  delay(1000);
 }
 
-void displayMenuIfNeeded() {
+/*void displayMenuIfNeeded() {
   if(joystickController->wasButtonPressed()) {
     actionHandler->executeAction("S_A");
   }
-}
+}*/
 
 void loop() {
-  VariableTimedAction::updateActions();
-  displayMenuIfNeeded();
+  //VariableTimedAction::updateActions();
+  actionHandler->run();
+  /*actionHandler->executeAction("T_U");
+  delay(1000);
+  actionHandler->executeAction("H_U");
+  delay(1000);
+  actionHandler->executeAction("W_U");
+  delay(1000);
+  actionHandler->executeAction("L_G");
+  delay(1000);
+  actionHandler->executeAction("L_N");
+  delay(1000);
+  actionHandler->executeAction("R_A:Change 100% water");
+  delay(5000);*/
+  //displayMenuIfNeeded();
 }

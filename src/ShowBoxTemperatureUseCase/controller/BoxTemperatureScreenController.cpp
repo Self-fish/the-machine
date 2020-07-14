@@ -5,13 +5,13 @@ BoxTemperatureScreenController::BoxTemperatureScreenController(LCDController* co
 }
 
 void BoxTemperatureScreenController::printBoxTemperature(char* temperature) {
-  lcdController->writeCharacter(6, 9, 2);
+  lcdController->writeCharacter(7, 9, 2);
   lcdController->printText(11, 2, "= " + String(temperature) + "C");
   freeResources();
 }
 
 void BoxTemperatureScreenController::configureSpecialCharacters() {
-  lcdController->createSpecialCharacters(fire, 6);
+  lcdController->createSpecialCharacters(fire, 7);
 }
 
 void BoxTemperatureScreenController::freeResources() {

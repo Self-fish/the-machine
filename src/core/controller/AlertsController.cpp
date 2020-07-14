@@ -7,18 +7,14 @@ AlertsController::AlertsController() {
 }
 
 void AlertsController::setAlert(char *alert) {
-  Serial.println(alert);
   if(!alertAlreadyExist(alert)) {
     addAlert(alert);
-    for(int i=0; i<arrayPos; i++) {
-      Serial.println(alerts[i]);
-    }
   }
 }
 
 void AlertsController::cleanAlerts() {
-  alerts[3] = {};
-  alertsTimeStamp[3] = {};
+  //alerts[3] = {};
+  //alertsTimeStamp[3] = {};
   arrayPos = 0;
 }
 

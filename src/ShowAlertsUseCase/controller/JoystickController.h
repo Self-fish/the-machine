@@ -3,8 +3,7 @@
 
 #include "Arduino.h"
 
-#define VRX_PIN A0
-#define VRY_PIN A1
+#define VRY_PIN A2
 #define BUTTON_PIN 9
 #define UP 0
 #define DOWN 1
@@ -16,7 +15,8 @@ class JoystickController {
 public:
   JoystickController();
   boolean wasButtonPressed();
-  int readX();
+  boolean wasSwipeRight();
+  boolean wasSwipedLeft();
 
 private:
 

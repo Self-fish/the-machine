@@ -8,12 +8,16 @@ AlertScreenController::AlertScreenController(LCDController* lController,
 
 void AlertScreenController::printAlert(char *alertText, String alertDate,
     bool isLastAlert) {
-      Serial.println(alertText);
   lcdController->cleanScreen();
   lcdController->printText(1, 0, alertDate);
   lcdController->printText(calculateFirstCharacterScreenPisition(alertText),
     2, alertText);
   statusController->setIsMainScreenActive(false);
+}
+
+void AlertScreenController::printCloseMenu() {
+  lcdController->cleanScreen();
+  lcdController->printText(3, 2, "Close Alerts");
 }
 
 void AlertScreenController::freeResources() {

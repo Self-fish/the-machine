@@ -14,14 +14,19 @@ boolean JoystickController::wasButtonPressed() {
   }
 }
 
-int JoystickController::readX() {
-int value = analogRead(VRY_PIN);
-  Serial.println(value);
-  if(value > 200) {
-    return DOWN;
-  } else if(value < 10) {
-    return UP;
+boolean JoystickController::wasSwipeRight() {
+  if(analogRead(VRY_PIN) < 100) {
+    return true;
   } else {
-    return MIDDLE;
+    return false;
+  }
+}
+
+
+boolean JoystickController::wasSwipedLeft() {
+  if(analogRead(VRY_PIN) > 900) {
+    return true;
+  } else {
+    return false;
   }
 }

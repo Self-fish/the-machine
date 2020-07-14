@@ -15,16 +15,18 @@
 class ActionBuilder {
 public:
   ActionBuilder();
-  Action* build(char* action);
+  Action* build(const char* action);
   void initialise(LiquidCrystal_I2C* l,
-    DHT* hSensor, DallasTemperature* temperatureSensor);
+    DHT* hSensor, DallasTemperature* temperatureSensor/*,
+    JoystickController* jController*/);
 
 private:
   DallasTemperature* temptSensor;
   DHT* humiditySensor;
   LiquidCrystal_I2C *lcd;
+  //JoystickController* joystickController;
   CurrentStatusController* currentStatusController;
-  AlertsController* alertsController;
+  //AlertsController* alertsController;
 
 };
 

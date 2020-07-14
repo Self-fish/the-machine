@@ -11,19 +11,20 @@ class ShowAlertsUseCase {
 
 public:
   ShowAlertsUseCase(AlertTimeController* tController,
-    AlertScreenController* sController, AlertsController* aController,
-    JoystickController* joystickController,
+    AlertScreenController* sController, /*AlertsController* aController,*/
+    /*JoystickController* joystickController,*/
     CurrentStatusController* currentStatusController);
-  void showAlerts();
+  /*void showAlerts();*/
 
 private:
   AlertTimeController* timeController;
   AlertScreenController* screenController;
-  AlertsController* alertsController;
-  JoystickController* joystickController;
+  //AlertsController* alertsController;
+  //JoystickController* joystickController;
   CurrentStatusController* currentStatusController;
   void showSpecificAlert(char* alertText, time_t alertsDate, bool isLastAlert);
-  void waitUserInteraction();
+  //void waitUserClose();
+  //int waitUserSwipe();
   void freeResources();
 };
 

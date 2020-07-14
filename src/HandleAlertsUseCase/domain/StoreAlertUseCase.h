@@ -8,13 +8,13 @@ class StoreAlertUseCase {
 
 public:
 
-  StoreAlertUseCase(AlertsController* aController,
+  StoreAlertUseCase(/*AlertsController* aController,*/
     CurrentStatusController* statusController);
   void storeAlert(char* alertText);
 
 
 private:
-  AlertsController* alertsController;
+  //AlertsController* alertsController;
   CurrentStatusController* currentStatusController;
 
 };

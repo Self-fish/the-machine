@@ -1,6 +1,6 @@
 #include "ActionHandler.h"
 
-ActionHandler::ActionHandler() {
+ActionHandler::ActionHandler(/*JoystickController* joystickController*/) {
   LiquidCrystal_I2C lcd(0x27, 20, 4);
   lcd.begin();
   lcd.backlight();
@@ -10,21 +10,21 @@ ActionHandler::ActionHandler() {
   DallasTemperature waterSensor(&ourWire);
   waterSensor.begin();
   actionBuilder = ActionBuilder();
-  actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor);
+  actionBuilder.initialise(&lcd, &humiditySensor, &waterSensor/*, joystickController*/);
 }
 
 unsigned long ActionHandler::run() {
-  Serial.println("Run!");
-  char action[100];
+  char action[30];
   if(Serial.available()) {
-    Serial.readString().toCharArray(action, 100);
+    Serial.readString().toCharArray(action, 30);
     executeAction(action);
   }
   delay(1000);
   return 0;
 }
 
-void ActionHandler::executeAction(char command[100]) {
+void ActionHandler::executeAction(char command[40]) {
+  Serial.println(command);
   action = actionBuilder.build(command);
   action->executeAction(command);
   free(action);
